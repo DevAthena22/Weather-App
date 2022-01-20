@@ -18,6 +18,16 @@
   color: #42a5f5;
 }
 
+li {
+  font-size: small;
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 input.Search,
 button.Current-location {
   font: 26px "Helvetica", "Arial", "sans-serif";
@@ -102,6 +112,14 @@ a {
 .description {
   margin-top: 10px;
   text-transform: capitalize;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.feels-like {
+  font-size: large;
+  font-weight: bolder;
+  color: #42a5f5;
 }
 
 .card.days {

@@ -42,15 +42,27 @@
       <div class="row">
         <div class="col">
           <h5 class="location" id="show-location">TORONTO</h5>
-          <h6 class="card-subtitle mb-2 text-muted date" id="app-date">
-            December 25<br />2021 | Sunday <br />
-            8:16 p.m.
-          </h6>
-          <h6 class="card-subtitle mb-2 description" id="description">Clear</h6>
         </div>
       </div>
 
       <div class="row">
+        <div class="col">
+          <h6 class="card-subtitle mb-2 text-muted date" id="app-date">
+            December 25<br />2021 | Sunday <br />
+            8:16 p.m.
+          </h6>
+          <div class="description" id="description">Clear</div>
+          <div class="feels-like" id="feelsLike"></div>
+        </div>
+
+        <div class="col fa-icon">
+          <img
+            src="https://openweathermap.org/img/wn/10d@2x.png"
+            id="main-weather-icon"
+            class="main-weather-icon"
+          />
+        </div>
+
         <div class="col">
           <h5 class="temperature" id="main-temperature">19°</h5>
           <div class="units">
@@ -64,18 +76,11 @@
           </div>
         </div>
 
-        <div class="col fa-icon">
-          <!--- <i class="fas fa-moon weather"></i> -->
-          <img
-            src="https://openweathermap.org/img/wn/10d@2x.png"
-            id="main-weather-icon"
-            class="main-weather-icon"
-          />
-        </div>
-
         <div class="col details">
-          <span>Wind Speed: <span id="wind-speed">km/hr</span></span><span>
-          <span>Humidity: <span id="humidity">%</span></span>
+          <ul>
+            <li id="wind-speed">Wind Speed</li>
+            <li id="humidity">Humidity</li>
+          </ul>
         </div>
       </div>
 

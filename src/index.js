@@ -1,39 +1,25 @@
-let appDate = document.querySelector("#app-date");
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-let day = now.getDay();
-let today = days[now.getDay()];
-let months = [
-  "January",
-  "Feruary",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let currentMonth = months[now.getMonth()];
-let year = now.getFullYear();
-let hours = now.getHours();
-let minutes = now.getMinutes();
-if (minutes === 10 || minutes > 10) {
-  appDate.innerHTML = `${currentMonth} ${day}, ${year} <br /> ${today} ${hours}:${minutes}`;
-} else {
-  appDate.innerHTML = `${currentMonth} ${today} ${hours}:0${minutes}`;
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  let day = now.getDay();
+  let today = days[now.getDay()];
+
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  if (minutes === 10 || minutes > 10) {
+    return `Last updated ${today}, ${hours}:${minutes}`;
+  } else {
+    return `Last updated ${today}, ${hours}:0${minutes}`;
+  }
 }
 
 function cityAndFahrenheitTemp(response) {
@@ -67,8 +53,10 @@ function cityAndCelsiusTemp(response) {
   let showCelsiusTemp = document.querySelector("#main-temperature");
   let weatherIcon = document.querySelector("#main-weather-icon");
   let descriptionElement = document.querySelector("#description");
+  let feelsLikeElement = document.querySelector("#feelsLike");
   let humidityElement = document.querySelector("#humidity");
   let windspeedElement = document.querySelector("#wind-speed");
+  let dateElement = document.querySelector("#app-date");
   document.querySelector("#celsius-link").innerHTML = `<strong>°C</strong>`;
   document.querySelector("#fahrenheit-link").innerHTML = `°F`;
   showCelsiusTemp.innerHTML = `${celsiusTemperature}°`;
@@ -77,10 +65,14 @@ function cityAndCelsiusTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   descriptionElement.innerHTML = `${response.data.weather[0].description}`;
-  humidityElement.innerHTML = `${response.data.main.humidity}%`;
-  windspeedElement.innerHTML = `${
+  feelsLikeElement.innerHTML = `Feels like ${Math.round(
+    response.data.main.feels_like
+  )}°C`;
+  humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  windspeedElement.innerHTML = `<br/>Wind Speed: ${
     Math.round(response.data.wind.speed) * 3.6
   } km/hr`;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
   document
     .querySelector("#fahrenheit-link")
