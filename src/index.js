@@ -65,9 +65,22 @@ function showFahrenheit(event) {
 function cityAndCelsiusTemp(response) {
   let celsiusTemperature = Math.round(response.data.main.temp);
   let showCelsiusTemp = document.querySelector("#main-temperature");
+  let weatherIcon = document.querySelector("#main-weather-icon");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windspeedElement = document.querySelector("#wind-speed");
   document.querySelector("#celsius-link").innerHTML = `<strong>°C</strong>`;
   document.querySelector("#fahrenheit-link").innerHTML = `°F`;
   showCelsiusTemp.innerHTML = `${celsiusTemperature}°`;
+  weatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  descriptionElement.innerHTML = `${response.data.weather[0].description}`;
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+  windspeedElement.innerHTML = `${
+    Math.round(response.data.wind.speed) * 3.6
+  } km/hr`;
 
   document
     .querySelector("#fahrenheit-link")

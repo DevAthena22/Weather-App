@@ -31,19 +31,21 @@ input.custom {
 }
 
 h5,
-input.Search {
+input.Search,
+.description {
   color: #42a5f5;
 }
 
 h6 {
   color: #47505e;
 }
+
 img {
   width: 25px;
 }
 
 .location {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 900;
   padding-left: 20px;
 }
@@ -67,7 +69,8 @@ a {
   border: 1px solid orange;
   border-radius: 30px;
   width: 60px;
-  margin-left: 50%;
+  position: relative;
+  margin-left: 30%;
 }
 
 .row {
@@ -95,8 +98,10 @@ a {
 .fa-moon {
   margin-top: 10px;
 }
+
 .description {
   margin-top: 10px;
+  text-transform: capitalize;
 }
 
 .card.days {
@@ -115,4 +120,9 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.main-weather-icon {
+  height: 175px;
+  width: 175px;
 }
